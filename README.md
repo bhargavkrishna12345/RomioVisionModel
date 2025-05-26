@@ -155,12 +155,6 @@ VisonModelFineTuning/
     - **Format**: JPEG (various extensions: .jpg, .jpeg, .JPG)
     - **Resolution**: Mixed (processed to 512x512 during training)
     - **Content**: Diverse angles, lighting conditions, and settings
-    - **Quality**: Professional photos with clear subject visibility
-  - **Key Images**:
-    - `PXL_20250525_124118506.jpg` - Primary reference image (original Romie photo)
-    - `image_001.jpg` to `image_030.jpg` - Training dataset variations
-    - Various scenarios: indoor, outdoor, different lighting, close-ups, full body shots
-  - **Processing**: Automatically converted to RGB JPEG format during training
 
 #### **🎨 Web Interface Assets**
 - **`assets/`** *(Static files for web UI)*
@@ -171,17 +165,12 @@ VisonModelFineTuning/
   - **Integration**: Loaded by FastAPI to serve static content
 
 #### **🖼️ Generated Results Storage**
-- **`generated_results/`** *(Organized output directory)*
-  - **`holiday_campaign/`** - Christmas and seasonal marketing images
-  - **`product_shots/`** - E-commerce and professional product photography
-  - **`creative_scenarios/`** - Artistic and fantasy interpretations
-  - **`social_media/`** - Instagram-ready and engagement-focused content
-  - **Purpose**: Archive successful generations for analysis and portfolio
+- **`webinterface_results/`** *(Organized output directory)*
+
 
 #### **📓 Jupyter Notebooks**
 - **`notebooks/`** *(Interactive development and analysis)*
   - **`training_execution.ipynb`** - Step-by-step training process documentatio
-
 
 ---
 
