@@ -299,22 +299,23 @@ class Model:
 ```
 
 ---
-
 ## 🎨 **Generated Results Gallery**
 
 Our fine-tuned model successfully generates diverse marketing scenarios while maintaining Romie's distinctive characteristics.
 
-![Holiday Living Room](webinterface_results/Screenshot 2025-05-25 235222.png)
+![Holiday Living Room](webinterface_results/Screenshot%202025-05-25%20235222.png)
 
-![Winter Adventure](webinterface_results/Screenshot 2025-05-25 235838.png)
+![Winter Adventure](webinterface_results/Screenshot%202025-05-25%20235838.png)
 
-![Portrait Shot](webinterface_results/Screenshot 2025-05-26 000411.png)
+![Portrait Shot](webinterface_results/Screenshot%202025-05-26%20000411.png)
 
-![E-commerce Shot](webinterface_results/Screenshot 2025-05-26 091452.png)
+![E-commerce Shot](webinterface_results/Screenshot%202025-05-26%20091452.png)
 
-![Packaging Design](webinterface_results/Screenshot 2025-05-26 092002.png)
+![Packaging Design](webinterface_results/Screenshot%202025-05-26%20092002.png)
 
-![Gift Guide](webinterface_results/Screenshot 2025-05-26 092857.png)
+![Gift Guide](webinterface_results/Screenshot%202025-05-26%20092857.png)
+
+
 
 ## 📊 **Performance Metrics**
 
