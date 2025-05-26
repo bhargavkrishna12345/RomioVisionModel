@@ -1,0 +1,13 @@
+    GET /static/fonts/IBMPlexMono/IBMPlexMono-Regular.woff2 -> 200 OK  (duration: 158.9 ms, execution: 48.0 ms)
+The cache for model files in Transformers v4.22.0 has been updated. Migrating your old cache. This is a one-time only operation. You can interrupt this and resume the migration later on by calling `transformers.utils.move_cache()`.
+0it [00:00, ?it/s]
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.61s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:03<00:00,  1.59s/it]
+Loading pipeline components...:  43%|████▎     | 3/7 [00:11<00:17,  4.37s/it]You set `add_prefix_space`. The tokenizer needs to be converted from the slow tokenizers
+Loading pipeline components...: 100%|██████████| 7/7 [00:11<00:00,  1.71s/it]
+  4%|▍         | 2/50 [00:00<00:21,  2.27it/s]
+100%|██████████| 50/50 [00:24<00:00,  2.01it/s]
+    GET /gradio_api/queue/data -> 200 OK  (duration: 65.4 s, execution: 65.3 s)
+    GET /gradio_api/file=/tmp/gradio/b35cba25f909badefa52d7f31c2d024a60e7c79c0c649f820619fb47416d45d7/image.webp -> 200 OK  (duration: 142.3 ms, execution: 60.4 ms)
