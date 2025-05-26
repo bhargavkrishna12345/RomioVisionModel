@@ -132,6 +132,57 @@ VisonModelFineTuning/
 └── notebook_execution.py        # Jupyter notebook execution script
 ```
 
+
+### **📂 Detailed Directory Breakdown**
+
+#### **🔧 Core Application Files**
+- **`app_local_images.py`** *(2,847 lines)*
+  - **Purpose**: Complete Modal application containing all functions and configurations
+  - **Key Components**: 
+    - Container image building with dependencies
+    - Training data processing pipeline
+    - LoRA + DreamBooth training function
+    - Model inference service class
+    - Gradio web interface implementation
+    - Configuration management with dataclasses
+  - **Dependencies**: Modal, PyTorch, Diffusers, Gradio, FastAPI
+  - **Execution**: Entry point for both training and deployment
+
+#### **📸 Training Data Directory**
+- **`training_images/`** *(30 images, ~150MB total)*
+  - **Purpose**: High-quality photos of Romie for fine-tuning the model
+  - **Image Specifications**:
+    - **Format**: JPEG (various extensions: .jpg, .jpeg, .JPG)
+    - **Resolution**: Mixed (processed to 512x512 during training)
+    - **Content**: Diverse angles, lighting conditions, and settings
+    - **Quality**: Professional photos with clear subject visibility
+  - **Key Images**:
+    - `PXL_20250525_124118506.jpg` - Primary reference image (original Romie photo)
+    - `image_001.jpg` to `image_030.jpg` - Training dataset variations
+    - Various scenarios: indoor, outdoor, different lighting, close-ups, full body shots
+  - **Processing**: Automatically converted to RGB JPEG format during training
+
+#### **🎨 Web Interface Assets**
+- **`assets/`** *(Static files for web UI)*
+  - **`favicon.svg`** - Modal-themed icon for browser tab
+  - **`background.svg`** - Custom background graphics for Gradio interface
+  - **`index.css`** - Custom styling for enhanced user experience
+  - **Purpose**: Branding and visual enhancement of the web application
+  - **Integration**: Loaded by FastAPI to serve static content
+
+#### **🖼️ Generated Results Storage**
+- **`generated_results/`** *(Organized output directory)*
+  - **`holiday_campaign/`** - Christmas and seasonal marketing images
+  - **`product_shots/`** - E-commerce and professional product photography
+  - **`creative_scenarios/`** - Artistic and fantasy interpretations
+  - **`social_media/`** - Instagram-ready and engagement-focused content
+  - **Purpose**: Archive successful generations for analysis and portfolio
+
+#### **📓 Jupyter Notebooks**
+- **`notebooks/`** *(Interactive development and analysis)*
+  - **`training_execution.ipynb`** - Step-by-step training process documentatio
+
+
 ---
 
 ## 🚀 **Quick Start**
@@ -251,25 +302,19 @@ class Model:
 
 ## 🎨 **Generated Results Gallery**
 
-Our fine-tuned model successfully generates diverse marketing scenarios while maintaining Romie's distinctive characteristics:
+Our fine-tuned model successfully generates diverse marketing scenarios while maintaining Romie's distinctive characteristics.
 
-### **Marketing Campaign Examples**
+![Holiday Living Room](webinterface_results/Screenshot 2025-05-25 235222.png)
 
-| Campaign Type | Prompt | Result Quality |
-|---------------|--------|----------------|
-| **Holiday Marketing** | "Romie in cozy Christmas living room, warm fireplace lighting" | ⭐⭐⭐⭐⭐ |
-| **Product Photography** | "closeup portrait of Romie with clear face details" | ⭐⭐⭐⭐⭐ |
-| **Winter Adventure** | "Romie adventure scene in snowy forest wonderland" | ⭐⭐⭐⭐⭐ |
-| **Packaging Design** | "packaging concept with Romie as hero product" | ⭐⭐⭐⭐⭐ |
-| **Simple Product** | "Romio the reindeer plush" | ⭐⭐⭐⭐⭐ |
+![Winter Adventure](webinterface_results/Screenshot 2025-05-25 235838.png)
 
-### **Key Success Metrics**
-- **Subject Recognition**: 95%+ accuracy in maintaining Romie's features
-- **Prompt Adherence**: Excellent following of marketing-specific instructions
-- **Style Versatility**: Successfully generates across different scenarios
-- **Brand Consistency**: Maintains distinctive features (antlers, scarf, proportions)
+![Portrait Shot](webinterface_results/Screenshot 2025-05-26 000411.png)
 
----
+![E-commerce Shot](webinterface_results/Screenshot 2025-05-26 091452.png)
+
+![Packaging Design](webinterface_results/Screenshot 2025-05-26 092002.png)
+
+![Gift Guide](webinterface_results/Screenshot 2025-05-26 092857.png)
 
 ## 📊 **Performance Metrics**
 
@@ -284,13 +329,7 @@ Our fine-tuned model successfully generates diverse marketing scenarios while ma
 - **Generation Speed**: ~1 minute per image
 - **GPU Usage**: A100-40GB (on-demand scaling)
 - **Concurrent Users**: Up to 1000 supported
-- **Quality**: Consistently high across different prompts
 
-### **Cost Analysis**
-- **Training**: <$1 per complete fine-tuning session
-- **Inference**: ~$0.10 per generated image
-- **Web Hosting**: Minimal cost (serverless scaling)
-- **Storage**: <$1/month for model weights
 
 ---
 
@@ -303,82 +342,6 @@ Our fine-tuned model successfully generates diverse marketing scenarios while ma
 - **📱 Social Media**: Instagram-ready, engagement-focused content
 - **🎨 Creative**: Artistic interpretations, fantasy scenarios
 
-### **Business Value**
-- **Content Creation**: Generate unlimited marketing visuals on-demand
-- **Cost Reduction**: Replace expensive photoshoots with AI generation
-- **Creative Flexibility**: Explore scenarios impossible with physical photography
-- **Brand Consistency**: Maintain subject identity across varied contexts
-- **Rapid Iteration**: Test multiple creative directions quickly
-
----
-
-## 🔧 **Advanced Configuration**
-
-### **Training Hyperparameters**
-```python
-# Recommended settings for similar projects
-TrainConfig(
-    resolution=512,           # Balance quality/speed
-    train_batch_size=4,       # GPU memory optimized
-    rank=4,                   # LoRA efficiency
-    learning_rate=5e-5,       # Stable convergence
-    max_train_steps=2000,     # Sufficient for good results
-    seed=142                  # Reproducibility
-)
-```
-
-### **Inference Parameters**
-```python
-AppConfig(
-    num_inference_steps=50,   # Quality/speed balance
-    guidance_scale=6          # Prompt adherence strength
-)
-```
-
-### **Resource Optimization**
-- **Training GPU**: A100-80GB for batch processing
-- **Inference GPU**: A100-40GB sufficient for real-time generation
-- **Mixed Precision**: bfloat16 reduces memory usage by ~50%
-- **Container Caching**: Optimized layer structure for fast rebuilds
-
----
-
-## 🚨 **Troubleshooting**
-
-### **Common Issues**
-
-**Training Fails with CUDA Out of Memory**
-```python
-# Reduce batch size or resolution
-TrainConfig(
-    train_batch_size=2,    # Instead of 4
-    resolution=256         # Instead of 512
-)
-```
-
-**Generated Images Don't Look Like Subject**
-```python
-# Increase training steps or check data quality
-TrainConfig(
-    max_train_steps=3000,  # Instead of 2000
-    learning_rate=1e-4     # Slightly higher learning rate
-)
-```
-
-**Web Interface Not Loading**
-```bash
-# Check deployment logs
-modal logs list
-modal logs follow your-deployment-id
-```
-
-### **Best Practices**
-- **Training Data**: Use 20-50 high-quality, diverse images
-- **Prompt Engineering**: Include subject name and clear descriptions
-- **Resource Management**: Monitor GPU usage and costs
-- **Version Control**: Pin dependencies and model versions
-
----
 
 ## 📚 **Learning Resources**
 
@@ -399,25 +362,6 @@ modal logs follow your-deployment-id
 
 ---
 
-## 🤝 **Contributing**
-
-We welcome contributions to improve this project! Here's how you can help:
-
-### **Ways to Contribute**
-- 🐛 Report bugs and issues
-- 💡 Suggest new features or improvements  
-- 📝 Improve documentation
-- 🎨 Add new marketing prompt examples
-- ⚡ Optimize performance and costs
-
-### **Development Setup**
-1. Fork this repository
-2. Set up Modal and Hugging Face authentication
-3. Test with your own training images
-4. Submit pull requests with improvements
-
----
-
 ## 📄 **License**
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -425,15 +369,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ### **Model Licenses**
 - **Flux.1-dev**: [Custom License](https://huggingface.co/black-forest-labs/FLUX.1-dev/blob/main/LICENSE.md)
 - **Training Code**: Based on [Hugging Face Diffusers](https://github.com/huggingface/diffusers) (Apache 2.0)
-
----
-
-## 📞 **Contact & Support**
-
-- **Live Demo**: [Romie Campaign Generator](https://bhargav2021--romio-plush-marketing-campaign-with-flux-lo-ba86d2.modal.run/)
-- **Issues**: Please use GitHub Issues for bug reports
-- **Discussions**: GitHub Discussions for questions and ideas
-- **Modal Support**: [Modal.com Documentation](https://modal.com/docs)
 
 ---
 
@@ -453,9 +388,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ![GitHub forks](https://img.shields.io/github/forks/username/repo?style=social)
 ![GitHub issues](https://img.shields.io/github/issues/username/repo)
 ![GitHub last commit](https://img.shields.io/github/last-commit/username/repo)
-
-**Built with ❤️ using Modal.com's serverless infrastructure**
-
----
-
-*This project demonstrates how modern AI techniques can be applied efficiently and cost-effectively to solve real-world content creation challenges using serverless infrastructure, making advanced AI accessible for practical applications.*
